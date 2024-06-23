@@ -1,4 +1,4 @@
-name: test-workflow
+name: test-deploy-workflow
 
 on: push
 
@@ -16,3 +16,18 @@ jobs:
         run: npm ci
       - name: run tests
         run: npm test
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get the code using action
+        uses: actions/checkout@v4
+      - name: install nodejs of version 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - name: install package.json
+        run: npm ci
+      - name: build the react app
+        run: npm build
+      - name: fake deploy
+        run: echo "deploying to cloud.."
