@@ -28,6 +28,6 @@ jobs:
       - name: install package.json
         run: npm ci
       - name: build the react app
-        run: npm build
+        run: npm run build
       - name: fake deploy
         run: echo "deploying to cloud.."
